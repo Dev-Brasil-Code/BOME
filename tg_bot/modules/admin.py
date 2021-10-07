@@ -28,16 +28,16 @@ def promote(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text("mension one.... 🤷🏻‍♂.")
+        message.reply_text("Mensão um... 🤷🏻‍♂.")
         return ""
 
     user_member = chat.get_member(user_id)
     if user_member.status == 'administrator' or user_member.status == 'creator':
-        message.reply_text("How am I meant to promote someone that's already an admin?")
+        message.reply_text("Como devo promover alguém que já é administrador?")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I can't promote myself! Get an admin to do it for me.")
+        message.reply_text("Eu não posso me promover! Peça a um administrador para fazer isso por mim.")
         return ""
 
     # set same perms as bot - bot can't assign higher perms than itself!
@@ -53,9 +53,9 @@ def promote(bot: Bot, update: Update, args: List[str]) -> str:
                           can_pin_messages=bot_member.can_pin_messages,
                           can_promote_members=bot_member.can_promote_members)
 
-    message.reply_text("promoted🧡")
+    message.reply_text("Promovido🧡")
     return "<b>{}:</b>" \
-           "\n#PROMOTED" \
+           "\n#PROMOVIDO" \
            "\n<b>Admin:</b> {}" \
            "\n<b>User:</b> {}".format(html.escape(chat.title),
                                       mention_html(user.id, user.first_name),
@@ -74,20 +74,20 @@ def demote(bot: Bot, update: Update, args: List[str]) -> str:
 
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text("mension one.... 🤷🏻‍♂.")
+        message.reply_text("Mensão um.... 🤷🏻‍♂.")
         return ""
 
     user_member = chat.get_member(user_id)
     if user_member.status == 'creator':
-        message.reply_text("i cant ban creator of the group.... 😬")
+        message.reply_text("Eu não posso banir o criador do grupo.... 😬")
         return ""
 
     if not user_member.status == 'administrator':
-        message.reply_text("Can't demote what wasn't promoted!")
+        message.reply_text("Não posso rebaixar o que não foi promovido!")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I can't demote myself! Get an admin to do it for me.")
+        message.reply_text("Eu não posso me rebaixar! Peça a um administrador para fazer isso por mim.")
         return ""
 
     try:
@@ -100,17 +100,17 @@ def demote(bot: Bot, update: Update, args: List[str]) -> str:
                               can_restrict_members=False,
                               can_pin_messages=False,
                               can_promote_members=False)
-        message.reply_text("Successfully demoted!")
+        message.reply_text("Rebaixado com sucesso!")
         return "<b>{}:</b>" \
-               "\n#DEMOTED" \
+               "\n#DEMOTADO" \
                "\n<b>Admin:</b> {}" \
                "\n<b>User:</b> {}".format(html.escape(chat.title),
                                           mention_html(user.id, user.first_name),
                                           mention_html(user_member.user.id, user_member.user.first_name))
 
     except BadRequest:
-        message.reply_text("Could not demote. I might not be admin, or the admin status was appointed by another "
-                           "user, so I can't act upon them!")
+        message.reply_text("Não foi possível rebaixar. Posso não ser administrador ou o status de administrador foi indicado por outro "
+                           "usuário, então eu não posso agir sobre eles!")
         return ""
 
 
@@ -140,7 +140,7 @@ def pin(bot: Bot, update: Update, args: List[str]) -> str:
             else:
                 raise
         return "<b>{}:</b>" \
-               "\n#PINNED" \
+               "\n#FIXADA" \
                "\n<b>Admin:</b> {}".format(html.escape(chat.title), mention_html(user.id, user.first_name))
 
     return ""
@@ -164,7 +164,7 @@ def unpin(bot: Bot, update: Update) -> str:
             raise
 
     return "<b>{}:</b>" \
-           "\n#UNPINNED" \
+           "\n#DESFIXADO" \
            "\n<b>Admin:</b> {}".format(html.escape(chat.title),
                                        mention_html(user.id, user.first_name))
 
@@ -190,7 +190,7 @@ def invite(bot: Bot, update: Update):
 @run_async
 def adminlist(bot: Bot, update: Update):
     administrators = update.effective_chat.get_administrators()
-    text = "Admins in *{}*:".format(update.effective_chat.title or "this chat")
+    text = "Administradores em *{}*:".format(update.effective_chat.title or "este chat")
     for admin in administrators:
         user = admin.user
         status = admin.status
@@ -198,7 +198,7 @@ def adminlist(bot: Bot, update: Update):
         if user.username:
             name = "[{}](tg://user?id={})".format(user.first_name + (user.last_name or ""), user.id)
         if status == "creator":
-            text += "\n 🔱 Creator:"
+            text += "\n 🔱 Criador:"
             text += "\n` • `{} \n\n 🔰 Admin:".format(name)
     for admin in administrators:
         user = admin.user
@@ -219,12 +219,12 @@ def __chat_settings__(chat_id, user_id):
 __help__ = """
  - /adminlist: list of admins in the chat
 
-*Admin only:*
- - /pin: silently pins the message replied to - add 'loud' or 'notify' to give notifs to users.
- - /unpin: unpins the currently pinned message
- - /invitelink: gets invitelink
- - /promote: promotes the user replied to
- - /demote: demotes the user replied to
+*Admin apenas:*
+ - /pin: fixa silenciosamente a mensagem respondida - adicione 'alto' ou 'notificar' para fornecer notificações aos usuários.
+ - /unpin: remove a mensagem atualmente fixada
+ - /invitelink: obtém link de convite
+ - /promote: promove o usuário como administrador
+ - /demote: remove o cargo como administrador
 """
 
 __mod_name__ = "🛡️ Admin 🛡️"

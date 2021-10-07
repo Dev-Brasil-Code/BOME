@@ -1,0 +1,87 @@
+
+{
+  "name": "RMCMG",
+  "description": "Telegram's sassiest group manager. Modular Telegram group management bot!",
+  "keywords": [
+    "telegram",
+    "best",
+    "group",
+    "manager",
+    "3"
+  ],
+  "repository": "https://github.com/Dev-Brasil-Code/BOME",
+  "env": {
+    "ENV": {
+      "description": "Definir isso como ANYTHING habilitará as variáveis ​​env",
+      "value": "ANYTHING"
+    },
+    "TOKEN": {
+      "description": "Seu token de bot, como uma string.",
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Um número inteiro que consiste em seu ID de proprietário",
+      "value": "412094015"
+    },
+    "OWNER_USERNAME": {
+      "description": "Seu nome de usuário",
+      "value": "mkspali"
+    },
+    "WEBHOOK": {
+      "description": "Definindo isso para ANYTHING irá habilitar webhooks quando em mensagens de modo env",
+      "value": "ANYTHING"
+    },
+    "URL": {
+      "description": "O URL do aplicativo Heroku semelhante a https://<appname>.herokuapp.com/",
+      "value": ""
+    },
+    "MESSAGE_DUMP": {
+      "description": "opcional: um bate-papo onde suas mensagens salvas respondidas são armazenadas, para impedir que as pessoas excluam suas mensagens antigas",
+      "value": "-1001340923981"
+    },
+    "SUDO_USERS": {
+      "description": "Uma lista separada por espaços de user_ids que devem ser considerados usuários sudo",
+      "value": "412094015"
+    },
+    "SUPPORT_USERS": {
+      "description": "Uma lista separada por espaços de user_ids que devem ser considerados usuários de suporte (can gban/ungban, nothing else)",
+      "value": "412094015"
+    },
+    "WHITELIST_USERS": {
+      "description": "Uma lista separada por espaços de user_ids que devem ser considerados na lista de permissões - eles não podem ser banidos.",
+      "value": "412094015"
+    },
+    "DONATION_LINK": {
+      "description": "Optional: link onde você gostaria de receber doações.",
+      "value": "https://t.me/mkspali"
+    },
+    "PORT": {
+      "description": "Porta a ser usada para seus webhooks",
+      "value": "8443"
+    },
+    "DEL_CMDS": {
+      "description": "Se deseja excluir comandos de usuários que não têm direitos para usar esse comando",
+      "value": "True"
+    },
+    "STRICT_GBAN": {
+      "description": "Aplique gbans em novos grupos, bem como em grupos antigos. Quando um usuário gbanned falar, ele será banido.",
+      "value": "True"
+    },
+    "ALLOW_EXCL": {
+      "description": "Permitir ou não o uso de pontos de exclamação! para comandos, bem como /.",
+      "value": "True"
+    },
+    "BAN_STICKER": {
+      "description": "Qual adesivo usar ao banir pessoas. Usar https://telegram.dog/ShowJsonBot para obter o file_id",
+      "value": "CAADBAAD6AMAAkJ_EQNu_RjOszbmnxYE"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "10"
+      }
+    }
+  ]
+}

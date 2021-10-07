@@ -60,7 +60,7 @@ Demorou muito para [meu criador] (t.me/AdmClaynet) chegar onde estou agora, e ca
 motivá-lo a me tornar ainda melhor. Toda a doação 
 Existem duas maneiras de pagá-lo; [PayPal](t.me/AdmClaynet), ou [Monzo](monzo.me/t.me/AdmClaynet)."""
 
-TECHNO_IMG = "https://user-images.githubusercontent.com/84823049/120094205-a4157400-c13c-11eb-9a72-8d1111809eb5.jpg"
+TECHNO_IMG = "https://camo.githubusercontent.com/b2be46bc601adac6de834240e3bddfc7840e46941f0424dc22eb5965759e0ab3/68747470733a2f2f692e6962622e636f2f6e42307036377a2f696d616765732d312e6a7067"
 IMPORTED = {}
 MIGRATEABLE = []
 HELPABLE = {}
